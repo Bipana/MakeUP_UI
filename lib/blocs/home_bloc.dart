@@ -5,6 +5,7 @@ import 'package:makeup_ui/actions/makeup_actions.dart';
 import 'package:makeup_ui/models/screen.dart';
 
 class HomeBloc {
+
   final makeUpActions = MakeUpActions();
 
   final _stateStreamController = StreamController<BuiltList<Product>>();
@@ -15,5 +16,10 @@ class HomeBloc {
     var makeup = await makeUpActions.getMakeUp();
 
     _stateStreamController.sink.add(makeup);
+  }
+
+//closes the stream to prevent the memory leak
+  void dispose() {
+    _stateStreamController.close();
   }
 }

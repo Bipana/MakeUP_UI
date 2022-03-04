@@ -1,6 +1,6 @@
 
 import 'package:flutter/material.dart';
-import 'package:makeup_ui/pages.dart/home_page.dart';
+import 'package:makeup_ui/pages/home_page.dart';
 
 void main() {
   runApp(const MyApp());

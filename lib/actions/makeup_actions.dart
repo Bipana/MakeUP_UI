@@ -2,11 +2,12 @@ import 'dart:convert';
 
 import 'package:built_collection/built_collection.dart';
 import 'package:built_value/serializer.dart';
-import 'package:makeup_ui/models/api.dart';
 import 'package:makeup_ui/models/serializers.dart';
 
 import '../models/screen.dart';
 import 'package:http/http.dart' as http;
+
+const String baseUrl= 'http://makeup-api.herokuapp.com/api/v1/products.json?brand=maybelline';
 
 class MakeUpActions {
   Future<BuiltList<Product>> getMakeUp() async {

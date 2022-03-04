@@ -4,7 +4,6 @@ import 'package:built_collection/built_collection.dart';
 import 'package:flutter/material.dart';
 import 'package:makeup_ui/blocs/home_bloc.dart';
 
-import '../models/api.dart';
 import '../models/screen.dart';
 import 'description_page.dart';
 
@@ -16,14 +15,20 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  final homeBloc = HomeBloc();
+  late HomeBloc homeBloc;
 
   @override
   void initState() {
     super.initState();
+    homeBloc = HomeBloc();
     homeBloc.getMakeup();
   }
 
+  @override
+  void dispose() {
+    homeBloc.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
