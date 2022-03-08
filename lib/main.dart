@@ -1,6 +1,6 @@
 
 import 'package:flutter/material.dart';
-import 'package:makeup_ui/pages/home_page.dart';
+import 'package:makeup_ui/pages/homepage.dart';
 
 void main() {
   runApp(const MyApp());
@@ -19,7 +19,7 @@ class _MyAppState extends State<MyApp> {
     return const MaterialApp(
       title: 'MakeUp UI',
       debugShowCheckedModeBanner: false,
-      home: MyHomePage(),
+      home: MySecondHomePage(),
     );
   }
 }

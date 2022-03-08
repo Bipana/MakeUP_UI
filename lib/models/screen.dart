@@ -1,6 +1,5 @@
 library screen;
 
-
 import 'package:built_collection/built_collection.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
@@ -27,13 +26,17 @@ abstract class Product implements Built<Product, ProductBuilder> {
   String get name;
   String get description;
   String get price;
-  String get image_link;
-  
-  double? get rating ;
-  String get product_type;
-  String get product_link;
-  DateTime get created_at;
-  DateTime get updated_at;
+  @BuiltValueField(wireName: 'image_link')
+  String? get imageLink;
+  double? get rating;
+  @BuiltValueField(wireName: 'product_type')
+  String? get productType;
+  @BuiltValueField(wireName: 'product_link')
+  String? get productLink;
+  @BuiltValueField(wireName: 'created_at')
+  DateTime? get createdAt;
+  @BuiltValueField(wireName: 'updated_at')
+  DateTime? get updatedAt;
 
   Product._();
 

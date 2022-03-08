@@ -75,29 +75,49 @@ class _$ProductSerializer implements StructuredSerializer<Product> {
       'price',
       serializers.serialize(object.price,
           specifiedType: const FullType(String)),
-      'image_link',
-      serializers.serialize(object.image_link,
-          specifiedType: const FullType(String)),
-      'product_type',
-      serializers.serialize(object.product_type,
-          specifiedType: const FullType(String)),
-      'product_link',
-      serializers.serialize(object.product_link,
-          specifiedType: const FullType(String)),
-      'created_at',
-      serializers.serialize(object.created_at,
-          specifiedType: const FullType(DateTime)),
-      'updated_at',
-      serializers.serialize(object.updated_at,
-          specifiedType: const FullType(DateTime)),
     ];
     Object? value;
+    value = object.imageLink;
+    if (value != null) {
+      result
+        ..add('image_link')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
     value = object.rating;
     if (value != null) {
       result
         ..add('rating')
         ..add(serializers.serialize(value,
             specifiedType: const FullType(double)));
+    }
+    value = object.productType;
+    if (value != null) {
+      result
+        ..add('product_type')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    value = object.productLink;
+    if (value != null) {
+      result
+        ..add('product_link')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    value = object.createdAt;
+    if (value != null) {
+      result
+        ..add('created_at')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(DateTime)));
+    }
+    value = object.updatedAt;
+    if (value != null) {
+      result
+        ..add('updated_at')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(DateTime)));
     }
     return result;
   }
@@ -134,28 +154,28 @@ class _$ProductSerializer implements StructuredSerializer<Product> {
               specifiedType: const FullType(String)) as String;
           break;
         case 'image_link':
-          result.image_link = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+          result.imageLink = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'rating':
           result.rating = serializers.deserialize(value,
               specifiedType: const FullType(double)) as double?;
           break;
         case 'product_type':
-          result.product_type = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+          result.productType = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'product_link':
-          result.product_link = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+          result.productLink = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'created_at':
-          result.created_at = serializers.deserialize(value,
-              specifiedType: const FullType(DateTime)) as DateTime;
+          result.createdAt = serializers.deserialize(value,
+              specifiedType: const FullType(DateTime)) as DateTime?;
           break;
         case 'updated_at':
-          result.updated_at = serializers.deserialize(value,
-              specifiedType: const FullType(DateTime)) as DateTime;
+          result.updatedAt = serializers.deserialize(value,
+              specifiedType: const FullType(DateTime)) as DateTime?;
           break;
       }
     }
@@ -263,17 +283,17 @@ class _$Product extends Product {
   @override
   final String price;
   @override
-  final String image_link;
+  final String? imageLink;
   @override
   final double? rating;
   @override
-  final String product_type;
+  final String? productType;
   @override
-  final String product_link;
+  final String? productLink;
   @override
-  final DateTime created_at;
+  final DateTime? createdAt;
   @override
-  final DateTime updated_at;
+  final DateTime? updatedAt;
 
   factory _$Product([void Function(ProductBuilder)? updates]) =>
       (new ProductBuilder()..update(updates)).build();
@@ -284,12 +304,12 @@ class _$Product extends Product {
       required this.name,
       required this.description,
       required this.price,
-      required this.image_link,
+      this.imageLink,
       this.rating,
-      required this.product_type,
-      required this.product_link,
-      required this.created_at,
-      required this.updated_at})
+      this.productType,
+      this.productLink,
+      this.createdAt,
+      this.updatedAt})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(id, 'Product', 'id');
     BuiltValueNullFieldError.checkNotNull(brand, 'Product', 'brand');
@@ -297,13 +317,6 @@ class _$Product extends Product {
     BuiltValueNullFieldError.checkNotNull(
         description, 'Product', 'description');
     BuiltValueNullFieldError.checkNotNull(price, 'Product', 'price');
-    BuiltValueNullFieldError.checkNotNull(image_link, 'Product', 'image_link');
-    BuiltValueNullFieldError.checkNotNull(
-        product_type, 'Product', 'product_type');
-    BuiltValueNullFieldError.checkNotNull(
-        product_link, 'Product', 'product_link');
-    BuiltValueNullFieldError.checkNotNull(created_at, 'Product', 'created_at');
-    BuiltValueNullFieldError.checkNotNull(updated_at, 'Product', 'updated_at');
   }
 
   @override
@@ -322,12 +335,12 @@ class _$Product extends Product {
         name == other.name &&
         description == other.description &&
         price == other.price &&
-        image_link == other.image_link &&
+        imageLink == other.imageLink &&
         rating == other.rating &&
-        product_type == other.product_type &&
-        product_link == other.product_link &&
-        created_at == other.created_at &&
-        updated_at == other.updated_at;
+        productType == other.productType &&
+        productLink == other.productLink &&
+        createdAt == other.createdAt &&
+        updatedAt == other.updatedAt;
   }
 
   @override
@@ -346,12 +359,12 @@ class _$Product extends Product {
                                         name.hashCode),
                                     description.hashCode),
                                 price.hashCode),
-                            image_link.hashCode),
+                            imageLink.hashCode),
                         rating.hashCode),
-                    product_type.hashCode),
-                product_link.hashCode),
-            created_at.hashCode),
-        updated_at.hashCode));
+                    productType.hashCode),
+                productLink.hashCode),
+            createdAt.hashCode),
+        updatedAt.hashCode));
   }
 
   @override
@@ -362,12 +375,12 @@ class _$Product extends Product {
           ..add('name', name)
           ..add('description', description)
           ..add('price', price)
-          ..add('image_link', image_link)
+          ..add('imageLink', imageLink)
           ..add('rating', rating)
-          ..add('product_type', product_type)
-          ..add('product_link', product_link)
-          ..add('created_at', created_at)
-          ..add('updated_at', updated_at))
+          ..add('productType', productType)
+          ..add('productLink', productLink)
+          ..add('createdAt', createdAt)
+          ..add('updatedAt', updatedAt))
         .toString();
   }
 }
@@ -395,29 +408,29 @@ class ProductBuilder implements Builder<Product, ProductBuilder> {
   String? get price => _$this._price;
   set price(String? price) => _$this._price = price;
 
-  String? _image_link;
-  String? get image_link => _$this._image_link;
-  set image_link(String? image_link) => _$this._image_link = image_link;
+  String? _imageLink;
+  String? get imageLink => _$this._imageLink;
+  set imageLink(String? imageLink) => _$this._imageLink = imageLink;
 
   double? _rating;
   double? get rating => _$this._rating;
   set rating(double? rating) => _$this._rating = rating;
 
-  String? _product_type;
-  String? get product_type => _$this._product_type;
-  set product_type(String? product_type) => _$this._product_type = product_type;
+  String? _productType;
+  String? get productType => _$this._productType;
+  set productType(String? productType) => _$this._productType = productType;
 
-  String? _product_link;
-  String? get product_link => _$this._product_link;
-  set product_link(String? product_link) => _$this._product_link = product_link;
+  String? _productLink;
+  String? get productLink => _$this._productLink;
+  set productLink(String? productLink) => _$this._productLink = productLink;
 
-  DateTime? _created_at;
-  DateTime? get created_at => _$this._created_at;
-  set created_at(DateTime? created_at) => _$this._created_at = created_at;
+  DateTime? _createdAt;
+  DateTime? get createdAt => _$this._createdAt;
+  set createdAt(DateTime? createdAt) => _$this._createdAt = createdAt;
 
-  DateTime? _updated_at;
-  DateTime? get updated_at => _$this._updated_at;
-  set updated_at(DateTime? updated_at) => _$this._updated_at = updated_at;
+  DateTime? _updatedAt;
+  DateTime? get updatedAt => _$this._updatedAt;
+  set updatedAt(DateTime? updatedAt) => _$this._updatedAt = updatedAt;
 
   ProductBuilder();
 
@@ -429,12 +442,12 @@ class ProductBuilder implements Builder<Product, ProductBuilder> {
       _name = $v.name;
       _description = $v.description;
       _price = $v.price;
-      _image_link = $v.image_link;
+      _imageLink = $v.imageLink;
       _rating = $v.rating;
-      _product_type = $v.product_type;
-      _product_link = $v.product_link;
-      _created_at = $v.created_at;
-      _updated_at = $v.updated_at;
+      _productType = $v.productType;
+      _productLink = $v.productLink;
+      _createdAt = $v.createdAt;
+      _updatedAt = $v.updatedAt;
       _$v = null;
     }
     return this;
@@ -464,17 +477,12 @@ class ProductBuilder implements Builder<Product, ProductBuilder> {
                 description, 'Product', 'description'),
             price: BuiltValueNullFieldError.checkNotNull(
                 price, 'Product', 'price'),
-            image_link: BuiltValueNullFieldError.checkNotNull(
-                image_link, 'Product', 'image_link'),
+            imageLink: imageLink,
             rating: rating,
-            product_type: BuiltValueNullFieldError.checkNotNull(
-                product_type, 'Product', 'product_type'),
-            product_link: BuiltValueNullFieldError.checkNotNull(
-                product_link, 'Product', 'product_link'),
-            created_at: BuiltValueNullFieldError.checkNotNull(
-                created_at, 'Product', 'created_at'),
-            updated_at: BuiltValueNullFieldError.checkNotNull(
-                updated_at, 'Product', 'updated_at'));
+            productType: productType,
+            productLink: productLink,
+            createdAt: createdAt,
+            updatedAt: updatedAt);
     replace(_$result);
     return _$result;
   }

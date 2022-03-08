@@ -50,9 +50,9 @@ class _MyHomePageState extends State<MyHomePage> {
                         (product) => Row(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
-                            Image.network(product.image_link.toString()),
+                            Image.network(product.imageLink.toString()),
                             Text(product.name.toString()),
-                            Text(product.created_at.toString()),
+                            Text(product.createdAt.toString()),
                             ElevatedButton(
                               child: const Text('Description'),
                               onPressed: () {
